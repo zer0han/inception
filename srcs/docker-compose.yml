@@ -1,0 +1,15 @@
+services:
+    mariadb:
+        build: requirements/mariadb
+        volumes:
+            - mariadb:/var/lib/mysql
+    
+    wordpress:
+        build: requirements/wordpress
+        volumes:
+            - wordpress:/var/www/html
+    
+    nginx:
+        build: requirements/nginx
+        ports:
+            - "443:443"
