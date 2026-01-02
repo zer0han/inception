@@ -3,20 +3,20 @@ NAME = inception
 all:
 	@printf "Launch configuration ${NAME}...\n"
 	@bash srcs/requirements/tools/make_dir.sh
-	@docker-compose -f ./srcs/docker-compose.yml --env-file srcs/.env up -d --build
+	@docker compose -f ./srcs/docker-compose.yml --env-file srcs/.env up -d --build
 
 build:
 	@printf "Building configuration ${NAME}...\n"
 	@bash srcs/requirements/tools/make_dir.sh
-	@docker-compose -f ./srcs/docker-compose.yml --env-file srcs/.env build
+	@docker compose -f ./srcs/docker-compose.yml --env-file srcs/.env build
 
 down:
 	@printf "Stopping configuration ${NAME}...\n"
-	@docker-compose -f ./srcs/docker-compose.yml --env-file srcs/.env down
+	@docker compose -f ./srcs/docker-compose.yml --env-file srcs/.env down
 
 re: down
 	@printf "Rebuild configuration ${NAME}...\n"
-	@docker-compose -f ./srcs/docker-compose.yml --env-file srcs/.env up -d --build
+	@docker compose -f ./srcs/docker-compose.yml --env-file srcs/.env up -d --build
 
 clean: down
 	@printf "Cleaning configuration ${NAME}...\n"
